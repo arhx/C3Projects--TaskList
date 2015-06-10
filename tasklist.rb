@@ -8,4 +8,15 @@ class TaskList < Sinatra::Base
 		@title = "Task List"
 		erb :home
 	end
+
+	get '/new_task' do
+		@title = "Add new task"
+		erb :new_task
+	end
+
+	# post '/new_task' do
+	# 	@title = "Add new task"
+	# 	erb :new_task
+	# end
+
 end
