@@ -14,9 +14,8 @@ class TaskList < Sinatra::Base
 		erb :new_task
 	end
 
-	# post '/new_task' do
-	# 	@title = "Add new task"
-	# 	erb :new_task
-	# end
-
+	post '/new_task' do
+		@title = "Add new task"
+		erb :new_task
+	end
 end
