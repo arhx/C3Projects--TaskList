@@ -18,7 +18,7 @@ module TaskList
       # prepare your statement
 
       insert_statement = "INSERT INTO tasks (name, description, completed_date) 
-      	VALUES (#{task_name}, #{task_description}, #{task_completed_date});"
+      	VALUES (\"#{task_name}\", \"#{task_description}\", \"#{task_completed_date}\");"
 
       # call `query!` to interact with the database
 	  query!(insert_statement)
