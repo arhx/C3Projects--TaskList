@@ -8,7 +8,8 @@ class TaskListSite < Sinatra::Base
 
 	get '/' do
 		@title = "Task List"
-
+		interface 		= TaskList::TaskRecord.new("tasklist.db")
+		@all_records = interface.get_all_records
 		erb :home
 	end
 
