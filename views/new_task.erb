@@ -12,16 +12,3 @@
 
 	<input type="submit" value="Add task">
 </form>
-
-<% if @tasklist %>
-	<h2>You entered the following task:</h2>
-	<p>Name: <%= @name %></p>
-	<p>Description: <%= @description %></p>
-	<p>Date of completion: <%= @completed_date %></p>
-	<p>id? <%= @last_record_id %></p>
-<% end %>
-
-<!-- <pre>
-	<%= params %>
-</pre>
- -->

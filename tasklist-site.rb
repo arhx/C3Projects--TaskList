@@ -7,10 +7,10 @@ class TaskListSite < Sinatra::Base
 	register Sinatra::Reloader
 
 	get '/' do
-		@title = "Task List"
+		@title 			= "Task List"
 		
-		interface 		= TaskList::TaskRecord.new("tasklist.db")
-		@all_records = interface.get_all_records
+		interface 		= TaskList::Interface.new("tasklist.db")
+		@all_records 	= interface.get_all_records
 
 		erb :home
 	end
@@ -29,10 +29,9 @@ class TaskListSite < Sinatra::Base
 		@description	= @tasklist[:description]
 		@completed_date	= @tasklist[:completed_date]
 
-		new_record 		= TaskList::TaskRecord.new("tasklist.db")
-		new_record.insert_new_task(@name, @description, @completed_date)
+		interface 		= TaskList::Interface.new("tasklist.db")
+		interface.insert_new_record(@name, @description, @completed_date)
 
 		redirect '/'
-		erb :home
 	end
 end
