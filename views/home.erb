@@ -1,3 +1,25 @@
 <h1>Task List</h1>
 <a href="/new_task"><p>Add a new task</p></a>
-<p> <%=@all_records %> </p>
+
+<% if @all_records %>
+	<table>
+		<thead>
+			<tr>
+				<th>Index</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Date Completed</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @all_records.each do |index, name, description, date_completed| %>
+				<tr>
+					<td><%= index %></td>
+					<td><%= name %></td>
+					<td><%= description %></td>
+					<td><%= date_completed %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
