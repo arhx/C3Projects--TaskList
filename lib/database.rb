@@ -23,7 +23,7 @@ module TaskList
     def query!(statement, *params)
       db = SQLite3::Database.open database_name
       db.execute statement, params
-    # rescue SQLite3::Exception => error
+    rescue SQLite3::Exception => error
       # use this block to recover from an error
       # consider giving the user a special message back
       # inspect the `error` object for information about the error
