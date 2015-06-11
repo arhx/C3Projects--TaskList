@@ -28,7 +28,6 @@ module TaskList
       # consider giving the user a special message back
       # inspect the `error` object for information about the error
     ensure
-      # statement.close if statement
       db.close if db
     end
   end

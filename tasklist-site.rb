@@ -6,8 +6,6 @@ require './lib/task-record'
 class TaskListSite < Sinatra::Base
 	register Sinatra::Reloader
 
-	# TaskList::Database.new(tasklist.db)
-
 	get '/' do
 		@title = "Task List"
 
@@ -27,9 +25,11 @@ class TaskListSite < Sinatra::Base
 		@name			= @tasklist[:name]
 		@description	= @tasklist[:description]
 		@completed_date	= @tasklist[:completed_date]
+
 		new_record 		= TaskList::TaskRecord.new("tasklist.db")
 		new_record.insert_new_task(@name, @description, @completed_date)
 
-		erb :new_task
+		redirect '/'
+		erb :home
 	end
 end
