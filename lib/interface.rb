@@ -19,8 +19,10 @@ module TaskList
       query! select_statement
     end
 
-    def update_record_column(task_id, column)
-      update_statement = 
+    def update_completed_date(task_id)
+      update_statement = "UPDATE tasks
+      SET completed_date = \"#{Time.now}\"
+      WHERE id=#{task_id};"
       query! update_statement
     end
   end

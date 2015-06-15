@@ -28,8 +28,10 @@ class TaskListSite < Sinatra::Base
 		@title = "Edit task"
 		@task_id = params[:id].to_i
 
-		interface = TaskList::Interface.new("tasklist.db")
-		interface.update_record(@task_id, date_completed)
+		if params[:completed] == "yes"
+			interface = TaskList::Interface.new("tasklist.db")
+			interface.update_completed_date(@task_id)
+		end
 
 		redirect '/'
 	end
