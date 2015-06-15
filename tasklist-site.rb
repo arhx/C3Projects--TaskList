@@ -15,6 +15,12 @@ class TaskListSite < Sinatra::Base
 		erb :home
 	end
 
+	get '/:id/edit' do
+		@id = params[:id]
+
+		erb :edit
+	end
+
 	get '/new_task' do
 		@title = "Add new task"
 

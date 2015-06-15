@@ -10,6 +10,7 @@
 				<th>Description</th>
 				<th>Completed?</th>
 				<th>Date Completed</th>
+				<th>Edit</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +25,7 @@
 						<td><%= "no" %></td>
 					<% end %>
 					<td><%= date_completed %></td>
+					<td><a href=<%="/#{index}/edit"%>>edit</a></td>
 				</tr>
 			<% end %>
 		</tbody>
