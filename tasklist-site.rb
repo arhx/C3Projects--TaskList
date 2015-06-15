@@ -1,14 +1,14 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require './lib/database'
-require './lib/task-record'
+require './lib/interface'
 
 class TaskListSite < Sinatra::Base
 	register Sinatra::Reloader
 
 	get '/' do
 		@title 			= "Task List"
-		
+
 		interface 		= TaskList::Interface.new("tasklist.db")
 		@all_records 	= interface.get_all_records
 
@@ -16,8 +16,9 @@ class TaskListSite < Sinatra::Base
 	end
 
 	get '/:id/edit' do
-		@id = params[:id]
-
+		@task_id = params[:id].to_i
+		interface = TaskList::Interface.new("tasklist.db")
+		@index, @name, @description, @date_completed = interface.get_record(@task_id).flatten
 		erb :edit
 	end
 

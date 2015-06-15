@@ -14,5 +14,9 @@ module TaskList
       query! select_statement
     end
 
+    def get_record(task_id)
+      select_statement = "SELECT * FROM tasks WHERE id=#{task_id};"
+      query! select_statement
+    end
   end
 end
