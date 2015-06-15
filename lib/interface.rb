@@ -19,6 +19,11 @@ module TaskList
       query! select_statement
     end
 
+    def delete_record(task_id)
+      delete_statement = "DELETE FROM tasks WHERE id=#{task_id};"
+      query! delete_statement
+    end
+
     def update_completed_date(task_id)
       update_statement = "UPDATE tasks
       SET completed_date = \"#{Time.now.strftime("%Y-%m-%d")}\"

@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Completed?</th>
+      <th>Date Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @index %></td>
+      <td><%= @name %></td>
+      <td><%= @description %></td>
+      <% if @date_completed != "" %>
+        <td><%= "yes" %></td>
+      <% else %>
+        <td><%= "no" %></td>
+      <% end %>
+      <td><%= @date_completed %></td>
+    </tr>
+  </tbody>
+</table>
+
+<form action="" method="post" accept-charset="utf-8">
+  <input type="submit" name="delete" value="Delete task">
+</form>

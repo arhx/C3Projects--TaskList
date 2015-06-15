@@ -26,11 +26,35 @@ class TaskListSite < Sinatra::Base
 
 	post '/:id/edit' do
 		@title = "Edit task"
+
 		@task_id = params[:id].to_i
 
 		if params[:completed] == "yes"
 			interface = TaskList::Interface.new("tasklist.db")
 			interface.update_completed_date(@task_id)
+		end
+
+		redirect '/'
+	end
+
+	get '/:id/delete' do
+		@title = "Delete task"
+
+		@task_id = params[:id].to_i
+
+		interface = TaskList::Interface.new("tasklist.db")
+		@index, @name, @description, @date_completed = interface.get_record(@task_id).flatten
+
+		erb :delete
+	end
+
+	post '/:id/delete' do
+		@title = "Delete task"
+
+		@task_id = params[:id].to_i
+		if params[:delete] == "Delete task"
+			interface = TaskList::Interface.new("tasklist.db")
+			interface.delete_record(@task_id)
 		end
 
 		redirect '/'

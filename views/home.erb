@@ -11,6 +11,7 @@
 				<th>Completed?</th>
 				<th>Date Completed</th>
 				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,6 +27,7 @@
 					<% end %>
 					<td><%= date_completed %></td>
 					<td><a href=<%="/#{index}/edit"%>>edit</a></td>
+					<td><a href=<%="/#{index}/delete"%>>delete</a></td>
 				</tr>
 			<% end %>
 		</tbody>
