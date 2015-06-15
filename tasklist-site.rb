@@ -52,7 +52,7 @@ class TaskListSite < Sinatra::Base
 		@title = "Delete task"
 
 		@task_id = params[:id].to_i
-		if params[:delete] == "Delete task"
+		if params[:delete] == "Yes, delete it!"
 			interface = TaskList::Interface.new("tasklist.db")
 			interface.delete_record(@task_id)
 		end
