@@ -21,7 +21,7 @@ module TaskList
 
     def update_completed_date(task_id)
       update_statement = "UPDATE tasks
-      SET completed_date = \"#{Time.now}\"
+      SET completed_date = \"#{Time.now.strftime("%Y-%m-%d")}\"
       WHERE id=#{task_id};"
       query! update_statement
     end
