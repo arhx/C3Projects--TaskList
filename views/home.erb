@@ -21,9 +21,23 @@
 					<td><%= name %></td>
 					<td><%= description %></td>
 					<% if date_completed != "" %>
-						<td><%= "yes" %></td>
+						<% @completed = "yes" %>
 					<% else %>
-						<td><%= "no" %></td>
+						<% @completed = "no" %>
+					<% end %>
+
+					<% if @completed == "yes" %>
+						<td><%= @completed %></td>
+					<% else %>
+						<td>
+							<form action="" method="post">
+								<input type="hidden" id="task_index"
+								value="<%= index %>">
+								<label for="completed"></label>
+								<input type="checkbox" id="completed" name="completed">
+								<input type="submit" value="completed?">
+							</form>
+						</td>
 					<% end %>
 					<td><%= date_completed %></td>
 					<td><a href=<%="/#{index}/edit"%>>edit</a></td>
@@ -33,3 +47,5 @@
 		</tbody>
 	</table>
 <% end %>
+
+<%= params %>

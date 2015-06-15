@@ -8,11 +8,25 @@ class TaskListSite < Sinatra::Base
 
 	get '/' do
 		@title 			= "Task List"
+		@completed = ""
 
 		interface 		= TaskList::Interface.new("tasklist.db")
 		@all_records 	= interface.get_all_records
 
 		erb :home
+	end
+
+	post '/' do
+		@title = "Task List"
+
+		@task_id = params[:task_index].to_i
+
+		if params[:completed] == "completed?"
+			interface = TaskList::Interface.new("tasklist.db")
+			interface.update_completed_date(@task_id)
+		end
+
+		redirect '/'
 	end
 
 	get '/:id/edit' do
