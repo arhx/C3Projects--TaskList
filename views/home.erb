@@ -31,10 +31,8 @@
 					<% else %>
 						<td>
 							<form action="" method="post">
-								<input type="hidden" name="task_index" id="task_index" value="<%= index %>">
-								<label for="completed"></label>
-								<input type="checkbox" id="completed" name="completed" value="completed?">
-								<input type="submit" value="completed?">
+								<input type="hidden" name="task_index" value="<%= index %>">
+								<input type="submit" name="completed" value="completed?">
 							</form>
 						</td>
 					<% end %>
