@@ -13,9 +13,20 @@
       <td><%= @index %></td>
       <td><%= @name %></td>
       <td><%= @description %></td>
-      <td>Yes</td>
+      <% if @date_completed != "" %>
+        <td><%= "yes" %></td>
+      <% else %>
+        <td><%= "no" %></td>
+      <% end %>
       <td><%= @date_completed %></td>
     </tr>
-
   </tbody>
 </table>
+
+<form action="" method="post" accept-charset="utf-8">
+  <label for="yes">Yes</label>
+  <input type="radio" name="completed" value="yes" id="yes">
+  <label for="no">No</label>
+  <input type="radio" name="completed" value="no" id="no" checked>
+  <input type="submit" value="Mark Completed">
+</form>

@@ -16,10 +16,22 @@ class TaskListSite < Sinatra::Base
 	end
 
 	get '/:id/edit' do
+		@title = "Edit task"
+
 		@task_id = params[:id].to_i
 		interface = TaskList::Interface.new("tasklist.db")
 		@index, @name, @description, @date_completed = interface.get_record(@task_id).flatten
 		erb :edit
+	end
+
+	post '/:id/edit' do
+		@title = "Edit task"
+		@task_id = params[:id].to_i
+
+		interface = TaskList::Interface.new("tasklist.db")
+		interface.update_record(@task_id, date_completed)
+
+		redirect '/'
 	end
 
 	get '/new_task' do

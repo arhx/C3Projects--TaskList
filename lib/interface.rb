@@ -18,5 +18,10 @@ module TaskList
       select_statement = "SELECT * FROM tasks WHERE id=#{task_id};"
       query! select_statement
     end
+
+    def update_record_column(task_id, column)
+      update_statement = 
+      query! update_statement
+    end
   end
 end
