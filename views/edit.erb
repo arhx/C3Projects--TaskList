@@ -1,32 +1,12 @@
-<table>
-  <thead>
-    <tr>
-      <th>Index</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Completed?</th>
-      <th>Date Completed</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @index %></td>
-      <td><%= @name %></td>
-      <td><%= @description %></td>
-      <% if @date_completed != "" %>
-        <td><%= "yes" %></td>
-      <% else %>
-        <td><%= "no" %></td>
-      <% end %>
-      <td><%= @date_completed %></td>
-    </tr>
-  </tbody>
-</table>
+<form action="" method="post" accept-charset="utf-8">
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name">
 
-<!-- <form action="" method="post" accept-charset="utf-8">
-  <label for="yes">Yes</label>
-  <input type="radio" name="completed" value="yes" id="yes">
-  <label for="no">No</label>
-  <input type="radio" name="completed" value="no" id="no" checked>
-  <input type="submit" value="Mark Completed">
-</form> -->
+  <label for="description">Description:</label>
+  <input type="text" name="description" id="description">
+
+  <label for="completed_date">Date of completion:</label>
+  <input type="text" name="completed_date" id="completed_date">
+
+  <input type="submit" value="Edit task">
+</form>

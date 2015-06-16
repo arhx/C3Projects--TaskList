@@ -30,5 +30,13 @@ module TaskList
       WHERE id=#{task_id};"
       query! update_statement
     end
+
+    def edit_record(task_name, task_description, task_completed_date, task_id)
+      update_statement = "UPDATE tasks
+      SET name=\"#{task_name}\", description=\"#{task_description}\", 
+        completed_date=\"#{task_completed_date}\" 
+        WHERE id=#{task_id};"
+      query! update_statement
+    end
   end
 end

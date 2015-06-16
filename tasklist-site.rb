@@ -25,7 +25,6 @@ class TaskListSite < Sinatra::Base
 			interface = TaskList::Interface.new("tasklist.db")
 			interface.update_completed_date(@task_id)
 		end
-		@all_records 	= interface.get_all_records
 
 		redirect '/'
 	end
@@ -41,15 +40,17 @@ class TaskListSite < Sinatra::Base
 
 	post '/:id/edit' do
 		@title = "Edit task"
-
 		@task_id = params[:id].to_i
 
-		if params[:completed] == "yes"
-			interface = TaskList::Interface.new("tasklist.db")
-			interface.update_completed_date(@task_id)
-		end
+		@name			= params[:name]
+		@description	= params[:description]
+		@completed_date	= params[:completed_date]
+
+		interface = TaskList::Interface.new("tasklist.db")
+		interface.edit_record(@name, @description, @completed_date, @task_id)
 
 		redirect '/'
+		# erb :edit
 	end
 
 	get '/:id/delete' do
@@ -84,10 +85,10 @@ class TaskListSite < Sinatra::Base
 	post '/new_task' do
 		@title 			= "Add new task"
 
-		@tasklist 		= params[:tasklist]
-		@name			= @tasklist[:name]
-		@description	= @tasklist[:description]
-		@completed_date	= @tasklist[:completed_date]
+		# @tasklist 		= params[:tasklist]
+		@name			= params[:name]
+		@description	= params[:description]
+		@completed_date	= params[:completed_date]
 
 		interface 		= TaskList::Interface.new("tasklist.db")
 		interface.insert_new_record(@name, @description, @completed_date)
