@@ -34,7 +34,9 @@ class TaskListSite < Sinatra::Base
 
 		@task_id = params[:id].to_i
 		interface = TaskList::Interface.new("tasklist.db")
-		@index, @name, @description, @date_completed = interface.get_record(@task_id).flatten
+		@old_index, @old_name, @old_description, @old_date = interface.get_record(@task_id).flatten
+		@record = interface.get_record(@task_id)
+
 		erb :edit
 	end
 
@@ -85,7 +87,6 @@ class TaskListSite < Sinatra::Base
 	post '/new_task' do
 		@title 			= "Add new task"
 
-		# @tasklist 		= params[:tasklist]
 		@name			= params[:name]
 		@description	= params[:description]
 		@completed_date	= params[:completed_date]

@@ -1,12 +1,21 @@
 <form action="" method="post" accept-charset="utf-8">
   <label for="name">Name:</label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="name" id="name" value="<%= @old_name %>" >
 
   <label for="description">Description:</label>
-  <input type="text" name="description" id="description">
+  <input type="text" name="description" id="description" value="<%= @old_description %>" >
 
   <label for="completed_date">Date of completion:</label>
-  <input type="text" name="completed_date" id="completed_date">
+  <input type="text" name="completed_date" id="completed_date" value="<%= @old_date %>">
 
   <input type="submit" value="Edit task">
 </form>
+<!-- 
+<%= params %>
+<p><%= @old_name %></p>
+<p><%= @old_description %></p>
+<p><%= @old_date %></p>
+
+
+<p><%= @record %></p>
+ -->
