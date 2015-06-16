@@ -35,7 +35,7 @@ class TaskListSite < Sinatra::Base
 		@task_id = params[:id].to_i
 		interface = TaskList::Interface.new("tasklist.db")
 		@old_index, @old_name, @old_description, @old_date = interface.get_record(@task_id).flatten
-		@record = interface.get_record(@task_id)
+		# @record = interface.get_record(@task_id)
 
 		erb :edit
 	end
